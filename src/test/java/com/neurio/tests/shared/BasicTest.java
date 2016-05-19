@@ -4,9 +4,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,13 +20,13 @@ import java.io.IOException;
 
 public class BasicTest extends Browser{
 
-    @BeforeTest
+    @BeforeClass
     public void beforeTest() {
         //Go to the home page
         LoginPage.loadLoginPage();
     }
 
-    @AfterTest
+    @AfterClass
     public void afterTest() {
         //Sign out
         UserBar.signOut();
