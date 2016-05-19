@@ -10,24 +10,34 @@ import org.testng.Assert;
  */
 public class UserBar extends Browser{
 
+    /**
+     * Check if the username in the top right of the user bar is correct
+     * @param userName User Name given
+     */
     public static void assertUserName(String userName){
-        String USERNAME_TEXT_BOX_CSS_SELECTOR = StringRef.USERNAME_TEXT_BOX_CSS_SELECTOR;
-        WebElement adminTextElement = driver.findElement(By.cssSelector(USERNAME_TEXT_BOX_CSS_SELECTOR));
+        WebElement adminTextElement = driver.findElement(By.cssSelector(StringRef.USERNAME_TEXT_BOX_CSS_SELECTOR));
 
         String adminText = adminTextElement.getText();
 
         Assert.assertEquals(adminText, userName, "admin != " + adminText);
     }
 
+    /**
+     * Toggle the User Menu in the User Bar to appear
+     */
     public static void toggleUserMenu(){
-        String ADMIN_DROPDOWN_TOGGLE_CSS_SELECTOR = StringRef.ADMIN_DROPDOWN_TOGGLE_CSS_SELECTOR;
-        WebElement adminMenuToggleElement = driver.findElement(By.cssSelector(ADMIN_DROPDOWN_TOGGLE_CSS_SELECTOR));
+        WebElement adminMenuToggleElement = driver.findElement(
+                By.cssSelector(StringRef.ADMIN_DROPDOWN_TOGGLE_CSS_SELECTOR));
         adminMenuToggleElement.click();
     }
 
+    /**
+     * Open an account as admin user
+     * @param name - Type in name in input to search for string
+     * @param  id - Click on the correct ID found in the search
+     */
     public static void adminSelectUserByNameID(String name, String id){
-        String ID_INPUT_CSS_SELECTOR = StringRef.ID_INPUT_CSS_SELECTOR;
-        WebElement userInputElement = driver.findElement(By.cssSelector(ID_INPUT_CSS_SELECTOR));
+        WebElement userInputElement = driver.findElement(By.cssSelector(StringRef.ID_INPUT_CSS_SELECTOR));
 
         userInputElement.sendKeys(name);
 
@@ -36,15 +46,15 @@ public class UserBar extends Browser{
         HomePage.waitForHomePage();
     }
 
+    /**
+     * Sign out of the web app
+     */
     public static void signOut(){
-        String ADMIN_DROPDOWN_TOGGLE_CSS_SELECTOR = StringRef.ADMIN_DROPDOWN_TOGGLE_CSS_SELECTOR;
-        String ADMIN_DROPDOWN_MENU_CSS_SELECTOR = StringRef.ADMIN_DROPDOWN_MENU_CSS_SELECTOR;
-        String ADMIN_SIGN_OUT_CSS_SELECTOR = StringRef.ADMIN_SIGN_OUT_CSS_SELECTOR;
-
-        WebElement adminMenuToggleElement = driver.findElement(By.cssSelector(ADMIN_DROPDOWN_TOGGLE_CSS_SELECTOR));
+        WebElement adminMenuToggleElement = driver.findElement(
+                By.cssSelector(StringRef.ADMIN_DROPDOWN_TOGGLE_CSS_SELECTOR));
         adminMenuToggleElement.click();
 
-        WebElement adminMenuElement = driver.findElement(By.cssSelector(ADMIN_DROPDOWN_MENU_CSS_SELECTOR));
-        adminMenuElement.findElement(By.cssSelector(ADMIN_SIGN_OUT_CSS_SELECTOR)).click();
+        WebElement adminMenuElement = driver.findElement(By.cssSelector(StringRef.ADMIN_DROPDOWN_MENU_CSS_SELECTOR));
+        adminMenuElement.findElement(By.cssSelector(StringRef.ADMIN_SIGN_OUT_CSS_SELECTOR)).click();
     }
 }

@@ -9,6 +9,9 @@ import org.openqa.selenium.WebElement;
  */
 public class LoginPage extends Browser{
 
+    /**
+     * Load the login page
+     */
     public static void loadLoginPage(){
         String HOME_PAGE = "https://staging.neur.io/";
         //Go to the home page
@@ -16,47 +19,57 @@ public class LoginPage extends Browser{
         waitForLoginPage();
     }
 
+    /**
+     * Enter username and password on the Login Page
+     * @param userName - The Username used
+     * @param password - The Password used
+     */
     public static void enterFields(String userName, String password){
-        String EMAIL = StringRef.EMAIL;
-        String PASSWORD = StringRef.PASSWORD;
-        String SIGN_IN_BUTTON_CSS_SELECTOR = StringRef.SIGN_IN_BUTTON_CSS_SELECTOR;
-
         // Find the text input element by its name
-        WebElement emailElement = driver.findElement(By.name(EMAIL));
-        WebElement passwordElement = driver.findElement(By.name(PASSWORD));
+        WebElement emailElement = driver.findElement(By.name(StringRef.EMAIL));
+        WebElement passwordElement = driver.findElement(By.name(StringRef.PASSWORD));
 
         // Enter something
         emailElement.sendKeys(userName);
         passwordElement.sendKeys(password);
 
-        WebElement signInElement = driver.findElement(By.cssSelector(SIGN_IN_BUTTON_CSS_SELECTOR));
+        WebElement signInElement = driver.findElement(By.cssSelector(StringRef.SIGN_IN_BUTTON_CSS_SELECTOR));
         // Now submit the form
         signInElement.click();
     }
 
+    /**
+     * Implicitly wait an error message to appear on login page
+     */
     public static void assertError(){
-        final String ERROR_ALERT_CSS_SELECTOR = StringRef.ERROR_ALERT_CSS_SELECTOR;
-        // Wait for Error
-        Common.waitForElement(ERROR_ALERT_CSS_SELECTOR);
+        Common.waitForElement(StringRef.ERROR_ALERT_CSS_SELECTOR);
     }
 
+    /**
+     * Sign in successfully with a correct username and password
+     * @param userName - The Username used
+     * @param password - The Password used
+     */
     public static void signIn(String userName, String password){
         enterFields(userName, password);
         HomePage.waitForHomePage();
     }
 
+    /**
+     * Clear the username and password fields on the login page
+     */
     public static void clearFields(){
-        String EMAIL = StringRef.EMAIL;
-        String PASSWORD = StringRef.PASSWORD;
-        WebElement emailElement = driver.findElement(By.name(EMAIL));
-        WebElement passwordElement = driver.findElement(By.name(PASSWORD));
+        WebElement emailElement = driver.findElement(By.name(StringRef.EMAIL));
+        WebElement passwordElement = driver.findElement(By.name(StringRef.PASSWORD));
 
         emailElement.clear();
         passwordElement.clear();
     }
 
+    /**
+     * Implicitly wait for the login page to appear
+     */
     public static void waitForLoginPage(){
-        final String LOGIN_SIGN_IN_CLASS_NAME = StringRef.LOGIN_SIGN_IN_CLASS_NAME;
-        Common.waitForElement(LOGIN_SIGN_IN_CLASS_NAME);
+        Common.waitForElement(StringRef.LOGIN_SIGN_IN_CLASS_NAME);
     }
 }

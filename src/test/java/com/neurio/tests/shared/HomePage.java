@@ -6,9 +6,11 @@ package com.neurio.tests.shared;
  */
 public class HomePage extends Browser{
 
+    /**
+     * Implicitly wait for the Home Page to appear
+     */
     public static void waitForHomePage(){
-        final String MAIN_DASHBOARD_CSS_SELECTOR = StringRef.MAIN_DASHBOARD_CSS_SELECTOR;
         // Wait for Element
-        Common.waitForElement(MAIN_DASHBOARD_CSS_SELECTOR);
+        Common.waitForElement(StringRef.MAIN_DASHBOARD_CSS_SELECTOR);
     }
 }

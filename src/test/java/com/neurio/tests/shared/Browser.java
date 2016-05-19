@@ -18,6 +18,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class Browser {
 
@@ -25,8 +26,8 @@ public class Browser {
 
     /**
      * Reads the arguments in the config.properties file
-     * Setups the browser based on the entry given in
-     * the browser variable
+     * Setups the browser based on the browser entry given in
+     * the config file
      */
     @BeforeSuite
     public void initializeBrowser() {
@@ -43,7 +44,8 @@ public class Browser {
             e.printStackTrace();
         }
 
-        String browser = prop.getProperty("browser");
+        // Default value is set to firefox here, if not found
+        String browser = prop.getProperty("browser", "firefox");
 
         if(browser.contains("chrome")){
             try {
@@ -60,6 +62,11 @@ public class Browser {
         } else {
             driver = new FirefoxDriver();
         }
+
+        // Default value is set to 10 here, if not found
+        int timeOut = Integer.parseInt(prop.getProperty("timeout", "10"));
+
+        driver.manage().timeouts().implicitlyWait(timeOut, TimeUnit.SECONDS);
     }
 
     /**
