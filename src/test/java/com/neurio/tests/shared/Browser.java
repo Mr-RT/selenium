@@ -4,7 +4,9 @@ package com.neurio.tests.shared;
  * Created by Robert on 2016-05-18.
  * This class setups the browser web driver before testing can begin
  */
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -17,6 +19,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -75,5 +78,28 @@ public class Browser {
     @AfterSuite
     public void closeBrowser() {
         driver.quit();
+    }
+
+    /**
+     * The following are helper functions to get web elements form the web page
+     */
+    public static WebElement getElementByClassName(String name){
+        return driver.findElement(By.className(name));
+    }
+
+    public static WebElement getElementByID(String name){
+        return driver.findElement(By.id(name));
+    }
+
+    public static WebElement getElementByCSS(String name){
+        return driver.findElement(By.cssSelector(name));
+    }
+
+    public static List<WebElement> getElementsByCSS(String name){
+        return driver.findElements(By.cssSelector(name));
+    }
+
+    public static WebElement getElementFromParentByClass(WebElement element, String name){
+        return element.findElement(By.className(name));
     }
 }

@@ -4,12 +4,35 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import java.util.List;
+
 /**
  * Created by Robert on 2016-05-18.
  * Class to navigate through the User Bar
  */
 public class UserBar extends Browser{
 
+    /**
+     * Selects tab in the user bar
+     * @param tab selected tab
+     */
+    public static void selectTab(StringRef.Tab tab){
+        String selectedTab = StringRef.tabMapEnumToString.get(tab);
+        List<WebElement> elementsList = getElementsByCSS(StringRef.TABS_CSS_SELECTOR);
+        for(WebElement element: elementsList){
+            if(element.getText().equals(selectedTab)){
+                element.click();
+                break;
+            }
+        }
+    }
+
+    /**
+     * Selects the settings button in user bar
+     */
+    public static void selectSettings(){
+        getElementByCSS(StringRef.SETTINGS_CSS_SELECTOR).click();
+    }
     /**
      * Check if the username in the top right of the user bar is correct
      * @param userName User Name given
@@ -19,7 +42,7 @@ public class UserBar extends Browser{
 
         String adminText = adminTextElement.getText();
 
-        Assert.assertEquals(adminText, userName, "admin != " + adminText);
+        Assert.assertEquals(adminText, userName, userName + " != " + adminText);
     }
 
     /**
