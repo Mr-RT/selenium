@@ -28,12 +28,17 @@ public class StringRef {
     public static final String HOME_PAGE_GENERATION_CLASS_NAME = "generation";
     public static final String TABS_CSS_SELECTOR = ".header > nav > a > span";
 
+    //Setting Page Variables
+    public static final String SETTINGS_LIST_ITEMS_CSS_SELECTOR = ".settings-sidebar > .list > a";
+
     //General Variables
     public static final String EMAIL = "email";
     public static final String PASSWORD = "password";
     public static final String VALUE = "value";
     public static final String UNITS = "unit";
     public static final String COST = "cost";
+    public static final String STAGING_HOME_PAGE = "https://staging.neur.io/";
+    public static final String PRODUCTION_HOME_PAGE = "https://production.neur.io/";
 
     public enum Tab {
         HOME, LOCATION, HISTORY
@@ -45,6 +50,20 @@ public class StringRef {
         tabMapEnumToString.put(Tab.HOME, "My Home");
         tabMapEnumToString.put(Tab.LOCATION, "Location");
         tabMapEnumToString.put(Tab.HISTORY, "History");
+    }
+
+    public enum SettingTab {
+        ACCOUNT, LOCATIONS, APPLIANCES_PROFILE, APPS, EXPORT_DATA
+    }
+
+    public static final Map<SettingTab, String> settingTabMapEnumToString;
+    static {
+        settingTabMapEnumToString = new HashMap<SettingTab, String>();
+        settingTabMapEnumToString.put(SettingTab.ACCOUNT, "Account");
+        settingTabMapEnumToString.put(SettingTab.LOCATIONS, "Locations");
+        settingTabMapEnumToString.put(SettingTab.APPLIANCES_PROFILE, "Appliances Profile");
+        settingTabMapEnumToString.put(SettingTab.APPS, "Apps");
+        settingTabMapEnumToString.put(SettingTab.EXPORT_DATA, "Export Data");
     }
 
 }

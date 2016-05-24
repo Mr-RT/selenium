@@ -13,7 +13,14 @@ public class LoginPage extends Browser{
      * Load the login page
      */
     public static void loadLoginPage(){
-        String HOME_PAGE = "https://staging.neur.io/";
+        String mode = Common.getPropertyValue("mode", "staging");
+        String HOME_PAGE;
+        if (mode.contains("staging")){
+            HOME_PAGE = StringRef.STAGING_HOME_PAGE;
+        } else {
+            HOME_PAGE = StringRef.PRODUCTION_HOME_PAGE;
+        }
+
         //Go to the home page
         driver.get(HOME_PAGE);
         waitForLoginPage();

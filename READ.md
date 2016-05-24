@@ -6,7 +6,9 @@ A Selenium based automated test project for the Neurio Web App.
 
 ## Installation
 
-Maven needs to be installed to run this project.
+Maven and a web browser such as Mozilla Firefox needs to be 
+installed to run this project.
+
 
 The project uses the following dependencies:
 * TestNG 6.9.10

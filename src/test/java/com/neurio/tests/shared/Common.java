@@ -9,6 +9,10 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 /**
  * Created by Robert on 2016-05-18.
@@ -29,12 +33,31 @@ public class Common extends Browser{
         }
     }
 
+    public static String getPropertyValue(String value, String defaultValue){
+        Properties prop = new Properties();
+        String propFileName = "config.properties";
+
+        InputStream inputStream;
+
+        try {
+            inputStream = new FileInputStream(propFileName);
+            prop.load(inputStream);
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        // Default value is set to here, if not found
+        return prop.getProperty(value, defaultValue);
+    }
+
     /**
      * Implicitly wait for an element to appear for 10 seconds
      * @param selector - CSS selector for the element
      */
     public static void waitForElement(final String selector){
-        (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
+        int maxTime = Integer.parseInt(getPropertyValue("timeout", "10"));
+        (new WebDriverWait(driver, maxTime)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.findElements(By.cssSelector(selector)).size() != 0;
 
@@ -47,7 +70,8 @@ public class Common extends Browser{
      * @param selector - Class name selector for the element
      */
     public static void waitForElementClass(final String selector){
-        (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
+        int maxTime = Integer.parseInt(getPropertyValue("timeout", "10"));
+        (new WebDriverWait(driver, maxTime)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.findElements(By.className(selector)).size() != 0;
             }
@@ -59,7 +83,8 @@ public class Common extends Browser{
      * @param selector - ID selector for the element
      */
     public static void waitForElementID(final String selector){
-        (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
+        int maxTime = Integer.parseInt(getPropertyValue("timeout", "10"));
+        (new WebDriverWait(driver, maxTime)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.findElements(By.id(selector)).size() != 0;
             }

@@ -14,13 +14,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
-import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class Browser {
@@ -34,21 +30,8 @@ public class Browser {
      */
     @BeforeSuite
     public void initializeBrowser() {
-        Properties prop = new Properties();
-        String propFileName = "config.properties";
-
-        InputStream inputStream;
-
-        try {
-            inputStream = new FileInputStream(propFileName);
-            prop.load(inputStream);
-        } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
-            e.printStackTrace();
-        }
-
         // Default value is set to firefox here, if not found
-        String browser = prop.getProperty("browser", "firefox");
+        String browser = Common.getPropertyValue("browser", "firefox");
 
         if(browser.contains("chrome")){
             try {
@@ -67,7 +50,7 @@ public class Browser {
         }
 
         // Default value is set to 10 here, if not found
-        int timeOut = Integer.parseInt(prop.getProperty("timeout", "10"));
+        int timeOut = Integer.parseInt(Common.getPropertyValue("timeout", "10"));
 
         driver.manage().timeouts().implicitlyWait(timeOut, TimeUnit.SECONDS);
     }
