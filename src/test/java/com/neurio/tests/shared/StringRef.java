@@ -30,6 +30,21 @@ public class StringRef {
 
     //Setting Page Variables
     public static final String SETTINGS_LIST_ITEMS_CSS_SELECTOR = ".settings-sidebar > .list > a";
+    public static final String ACCOUNT_DETAILS_NAME_INPUT_CSS_SELECTOR = ".first-card input";
+    public static final String ACCOUNT_DETAILS_SAVE_CHANGES_BUTTON_CSS_SELECTOR = ".first-card .loading-button";
+    public static final String ACCOUNT_DETAILS_HELP_BLOCK_CSS_SELECTOR = ".first-card .help-block";
+    public static final String CURRENT_PASSWORD_NAME = "currentPassword";
+    public static final String CONFIRM_PASSWORD_NAME = "confirmPassword";
+    public static final String NEW_EMAIL_NAME = "newEmail";
+    public static final String CONFIRM_EMAIL_NAME = "confirmEmail";
+    public static final String PASSWORD_INPUT_CLASS_NAME = "password-input";
+    public static final String CHANGE_PASSWORD_BUTTON_CSS_SELECTOR = ".loading-button:nth-child(4)";
+    public static final String CHANGE_EMAIL_BUTTON_CSS_SELECTOR = ".btn-primary:nth-child(1)";
+    public static final String HAS_ERROR_CLASS_NAME = "has-error";
+    public static final String CHANGE_EMAIL_DIALOG_CLASS_NAME = "modal-body";
+    public static final String CONFIRM_BUTTON_CLASS_NAME = "confirm-button";
+    public static final String CLOSE_BUTTON_CLASS_NAME = "close-button";
+    public static final String SETTINGS_SIGN_OUT_CSS_SELECTOR = ".userbar-text span:nth-child(3)";
 
     //General Variables
     public static final String EMAIL = "email";
@@ -39,6 +54,7 @@ public class StringRef {
     public static final String COST = "cost";
     public static final String STAGING_HOME_PAGE = "https://staging.neur.io/";
     public static final String PRODUCTION_HOME_PAGE = "https://production.neur.io/";
+    public static final String HELP_BLOCK_CLASS_NAME = "help-block";
 
     public enum Tab {
         HOME, LOCATION, HISTORY

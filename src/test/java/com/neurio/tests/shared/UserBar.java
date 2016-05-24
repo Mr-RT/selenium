@@ -33,6 +33,7 @@ public class UserBar extends Browser{
     public static void selectSettings(){
         getElementByCSS(StringRef.SETTINGS_CSS_SELECTOR).click();
     }
+
     /**
      * Check if the username in the top right of the user bar is correct
      * @param userName User Name given

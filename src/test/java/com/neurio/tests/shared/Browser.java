@@ -64,7 +64,7 @@ public class Browser {
     }
 
     /**
-     * The following are helper functions to get web elements form the web page
+     * The following are helper functions to get web elements from the web page using ID, Class Names, etc.
      */
     public static WebElement getElementByClassName(String name){
         return driver.findElement(By.className(name));
@@ -78,11 +78,27 @@ public class Browser {
         return driver.findElement(By.cssSelector(name));
     }
 
+    public static WebElement getElementByName(String name){
+        return driver.findElement(By.name(name));
+    }
+
     public static List<WebElement> getElementsByCSS(String name){
         return driver.findElements(By.cssSelector(name));
     }
 
+    public static List<WebElement> getElementsByClassName(String name){
+        return driver.findElements(By.className(name));
+    }
+
     public static WebElement getElementFromParentByClass(WebElement element, String name){
         return element.findElement(By.className(name));
+    }
+
+    public static WebElement getElementFromParentByCSS(WebElement element, String name){
+        return element.findElement(By.cssSelector(name));
+    }
+
+    public static WebElement getElementFromParentByName(WebElement element, String name){
+        return element.findElement(By.name(name));
     }
 }

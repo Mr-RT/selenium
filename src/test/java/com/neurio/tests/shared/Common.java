@@ -55,6 +55,14 @@ public class Common extends Browser{
      * Implicitly wait for an element to appear for 10 seconds
      * @param selector - CSS selector for the element
      */
+    public static boolean checkForElement(String selector){
+        return driver.findElements(By.cssSelector(selector)).size() != 0;
+    }
+
+    /**
+     * Implicitly wait for an element to appear for 10 seconds
+     * @param selector - CSS selector for the element
+     */
     public static void waitForElement(final String selector){
         int maxTime = Integer.parseInt(getPropertyValue("timeout", "10"));
         (new WebDriverWait(driver, maxTime)).until(new ExpectedCondition<Boolean>() {

@@ -28,7 +28,11 @@ public class BasicTest extends Browser{
     @AfterClass
     public void afterTest() {
         //Sign out
-        UserBar.signOut();
+        if(Common.checkForElement(StringRef.ADMIN_DROPDOWN_TOGGLE_CSS_SELECTOR)){
+            UserBar.signOut();
+        } else {
+            SettingsPage.signOut();
+        }
     }
 
     @AfterMethod
