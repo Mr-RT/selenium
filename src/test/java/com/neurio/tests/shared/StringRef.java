@@ -46,15 +46,42 @@ public class StringRef {
     public static final String CLOSE_BUTTON_CLASS_NAME = "close-button";
     public static final String SETTINGS_SIGN_OUT_CSS_SELECTOR = ".userbar-text span:nth-child(3)";
 
+    //Location Page Variables
+    public static final String SAVE_LOCATION_CHANGES_BUTTON_CSS_SELECTOR = ".loading-button:nth-child(6)";
+    public static final String TIMEZONE = "timezone";
+    public static final String POSTAL_CODE = "postalCode";
+    public static final String HOME_TYPE = "homeType";
+    public static final String HOME_SIZE = "homeSize";
+    public static final String RESIDENTS = "residents";
+    public static final String ALWAYS_ON_TARGET = "alwaysOnTarget";
+    public static final String BUDGET = "budget";
+    public static final String BILLING_CYCLE_DAY = "billingCycleDay";
+    public static final String FIXED_CHARGE ="fixedCharge";
+    public static final String BILLING_TYPE = "billingType";
+    public static final String TAX_RATE = "taxRate";
+
+    public static final String ENERGY_RATE = "energyRate";
+    public static final String NUM_TIERS = "numTiers";
+    public static final String WEEKENDS = "weekends";
+    public static final String TIER_1_DETAILS = "pricingTiers-0-maxConsumption";
+    public static final String TIER_1_ENERGY_RATES = "pricingTiers-0-price";
+    public static final String TIER_2_ENERGY_RATES = "pricingTiers-0-price";
+    public static final String OFF_PEAK_PRICE = "offPeakPrice";
+    public static final String PEAK_1_FROM = "peak-1-from";
+    public static final String PEAK_1_TO = "peak-1-to";
+    public static final String PEAK_1_RATE = "peak-1-price";
+
     //General Variables
     public static final String EMAIL = "email";
     public static final String PASSWORD = "password";
     public static final String VALUE = "value";
     public static final String UNITS = "unit";
+    public static final String NAME = "name";
     public static final String COST = "cost";
     public static final String STAGING_HOME_PAGE = "https://staging.neur.io/";
     public static final String PRODUCTION_HOME_PAGE = "https://production.neur.io/";
     public static final String HELP_BLOCK_CLASS_NAME = "help-block";
+    public static final String OPTION = "option";
 
     public enum Tab {
         HOME, LOCATION, HISTORY

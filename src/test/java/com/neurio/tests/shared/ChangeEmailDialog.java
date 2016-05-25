@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 
 /**
  * Created by Robert on 5/24/2016.
- *
+ * Class to navigate the Change Email Dialog
  */
 public class ChangeEmailDialog extends Browser{
     /**

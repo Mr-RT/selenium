@@ -8,11 +8,12 @@ import org.testng.annotations.Test;
  * Settings Test
  */
 public class SettingsTests extends BasicTest {
+    String LOGIN = "robert+89891@neur.io";
+    String PASSWORD = "kashani1234";
 
     @Test
     public void SettingsPageTest01() {
-        String LOGIN = "robert+89891@neur.io";
-        String PASSWORD = "kashani1234";
+
         String NEW_EMAIL = "robert+89892@neur.io";
 
         String ACCOUNT_NAME = "Robert89891";
@@ -21,7 +22,7 @@ public class SettingsTests extends BasicTest {
         String BAD_PASSWORD = "123456";
         String NEW_PASSWORD = PASSWORD + "new";
 
-        Report("Setting Page Test");
+        Report("Setting Page Test 01");
 
         When("I login");
         LoginPage.signIn(LOGIN, PASSWORD);
@@ -29,21 +30,21 @@ public class SettingsTests extends BasicTest {
         UserBar.selectSettings();
 
         When("I change name to one longer than 50 characters");
-        SettingsPage.changeAccountName(BAD_ACCOUNT_NAME);
+        AccountPage.changeAccountName(BAD_ACCOUNT_NAME);
 
         Then("It should fail");
-        SettingsPage.checkForErrors();
+        AccountPage.checkForErrors();
 
         When("I change the name, it should work and be checked later on in the test");
-        SettingsPage.changeAccountName(NEW_ACCOUNT_NAME);
+        AccountPage.changeAccountName(NEW_ACCOUNT_NAME);
 
-        SettingsPage.changePassword(PASSWORD, BAD_PASSWORD);
+        AccountPage.changePassword(PASSWORD, BAD_PASSWORD);
 
         Then("It should fail");
-        SettingsPage.checkForErrors();
+        AccountPage.checkForErrors();
 
         When("I change the password, it should work and be checked later on in the test");
-        SettingsPage.changePassword(PASSWORD, NEW_PASSWORD);
+        AccountPage.changePassword(PASSWORD, NEW_PASSWORD);
 
         SettingsPage.signOut();
 
@@ -56,23 +57,23 @@ public class SettingsTests extends BasicTest {
         UserBar.assertUserName(NEW_ACCOUNT_NAME);
 
         Report("The email and account name will be changed back");
-        SettingsPage.changeAccountName(ACCOUNT_NAME);
+        AccountPage.changeAccountName(ACCOUNT_NAME);
 
-        SettingsPage.changePassword(NEW_PASSWORD, PASSWORD);
+        AccountPage.changePassword(NEW_PASSWORD, PASSWORD);
 
-        SettingsPage.pressChangeEmailButton();
+        AccountPage.pressChangeEmailButton();
 
         When("I set new email to one already in use");
         ChangeEmailDialog.changeEmail(PASSWORD, LOGIN);
 
         Then("It should fail");
-        SettingsPage.checkForErrors();
+        AccountPage.checkForErrors();
 
         When("I set new email with wrong password");
         ChangeEmailDialog.changeEmail(BAD_PASSWORD, LOGIN);
 
         Then("It should fail");
-        SettingsPage.checkForErrors();
+        AccountPage.checkForErrors();
 
         When("I use new emails that do not match");
         ChangeEmailDialog.enterCurrentPassword(PASSWORD);
@@ -84,10 +85,23 @@ public class SettingsTests extends BasicTest {
         ChangeEmailDialog.submitChangeEmail();
 
         Then("It should fail");
-        SettingsPage.checkForErrors();
+        AccountPage.checkForErrors();
 
         ChangeEmailDialog.close();
 
-        Report("Setting Page Test Passed!");
+        Report("Setting Page Test 01 Passed!");
+    }
+
+    @Test
+    public void SettingsPageTest02() {
+        Report("Setting Page Test 01");
+
+        When("I login");
+        LoginPage.signIn(LOGIN, PASSWORD);
+
+        UserBar.selectSettings();
+        SettingsPage.selectSettingsTab(StringRef.SettingTab.LOCATIONS);
+
+
     }
 }

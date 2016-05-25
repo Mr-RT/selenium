@@ -1,6 +1,7 @@
 package com.neurio.tests.shared;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
@@ -14,16 +15,21 @@ public class UserBar extends Browser{
 
     /**
      * Selects tab in the user bar
-     * @param tab selected tab
+     * @param tab Selected tab
      */
     public static void selectTab(StringRef.Tab tab){
         String selectedTab = StringRef.tabMapEnumToString.get(tab);
         List<WebElement> elementsList = getElementsByCSS(StringRef.TABS_CSS_SELECTOR);
+        boolean notFound = true;
         for(WebElement element: elementsList){
             if(element.getText().equals(selectedTab)){
                 element.click();
+                notFound = false;
                 break;
             }
+        }
+        if(notFound){
+            throw new NoSuchElementException("Tab not found");
         }
     }
 
