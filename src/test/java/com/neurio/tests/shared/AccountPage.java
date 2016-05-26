@@ -80,13 +80,6 @@ public class AccountPage extends Browser {
     }
 
     /**
-     * Check if an error occurred on page
-     */
-    public static void checkForErrors(){
-        Common.waitForElementClass(StringRef.HAS_ERROR_CLASS_NAME);
-    }
-
-    /**
      * Check if error message occurs on page
      * @param message Message expected to be shown
      */

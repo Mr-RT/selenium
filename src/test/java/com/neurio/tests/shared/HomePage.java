@@ -47,4 +47,8 @@ public class HomePage extends Browser{
         WebElement consumptionElement = getElementByClassName(StringRef.HOME_PAGE_GENERATION_CLASS_NAME);
         return getElementFromParentByClass(consumptionElement, StringRef.COST).getText();
     }
+
+    public static String getSolarSavings(){
+        return getElementByCSS(StringRef.SOLAR_SAVINGS_TEXT_CSS_SELECTOR).getText();
+    }
 }

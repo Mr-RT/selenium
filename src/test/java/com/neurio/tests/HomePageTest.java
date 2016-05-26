@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 /**
  * Created by Robert T. on 5/20/2016.
- *
+ * Home Page Test
  */
 public class HomePageTest extends BasicTest {
 

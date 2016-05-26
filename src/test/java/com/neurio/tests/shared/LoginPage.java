@@ -48,8 +48,15 @@ public class LoginPage extends Browser{
     /**
      * Implicitly wait an error message to appear on login page
      */
-    public static void assertError(){
-        Common.waitForElement(StringRef.ERROR_ALERT_CSS_SELECTOR);
+    public static boolean assertError(){
+        try{
+            Common.waitForElement(StringRef.ERROR_ALERT_CSS_SELECTOR);
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
     /**

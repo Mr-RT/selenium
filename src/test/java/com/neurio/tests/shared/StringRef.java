@@ -27,6 +27,7 @@ public class StringRef {
     public static final String HOME_PAGE_CONSUMPTION_CLASS_NAME = "consumption";
     public static final String HOME_PAGE_GENERATION_CLASS_NAME = "generation";
     public static final String TABS_CSS_SELECTOR = ".header > nav > a > span";
+    public static final String SOLAR_SAVINGS_TEXT_CSS_SELECTOR = ".savings > span:nth-child(2)";
 
     //Setting Page Variables
     public static final String SETTINGS_LIST_ITEMS_CSS_SELECTOR = ".settings-sidebar > .list > a";
@@ -47,7 +48,10 @@ public class StringRef {
     public static final String SETTINGS_SIGN_OUT_CSS_SELECTOR = ".userbar-text span:nth-child(3)";
 
     //Location Page Variables
-    public static final String SAVE_LOCATION_CHANGES_BUTTON_CSS_SELECTOR = ".loading-button:nth-child(6)";
+    public static final String LOCATION_LIST_ITEMS_CLASS_NAME = "settings-locations-item";
+    public static final String LOCATION_LIST_ITEMS_CSS_SELECTOR = ".settings-text span";
+    public static final String SAVE_LOCATION_CHANGES_BUTTON_CSS_SELECTOR =
+            "body > div > div > div.content > div > div.main.settings > form > div > div.body > button";
     public static final String TIMEZONE = "timezone";
     public static final String POSTAL_CODE = "postalCode";
     public static final String HOME_TYPE = "homeType";
@@ -79,9 +83,10 @@ public class StringRef {
     public static final String NAME = "name";
     public static final String COST = "cost";
     public static final String STAGING_HOME_PAGE = "https://staging.neur.io/";
-    public static final String PRODUCTION_HOME_PAGE = "https://production.neur.io/";
+    public static final String PRODUCTION_HOME_PAGE = "https://my.neur.io/";
     public static final String HELP_BLOCK_CLASS_NAME = "help-block";
     public static final String OPTION = "option";
+    public static final String ALERT_SUCCESS = "alert-success";
 
     public enum Tab {
         HOME, LOCATION, HISTORY

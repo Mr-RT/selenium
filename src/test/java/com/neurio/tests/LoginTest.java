@@ -1,10 +1,10 @@
 package com.neurio.tests;
 
 import com.neurio.tests.shared.BasicTest;
-import com.neurio.tests.shared.UserBar;
 import com.neurio.tests.shared.LoginPage;
-import org.testng.annotations.*;
-import java.lang.*;
+import com.neurio.tests.shared.UserBar;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 /**
  * Created by Robert T. on 2016-05-16.
@@ -25,23 +25,23 @@ public class LoginTest extends BasicTest {
 
         LoginPage.enterFields(EMAIL + "@email.com", PASSWORD);
 
-        Then("Wait for Error");
-        LoginPage.assertError();
+        Then("Check for Error to Appear");
+        Assert.assertTrue(LoginPage.assertError(), "No Error Appeared");
         LoginPage.clearFields();
 
         When("LoginPage Case - Invalid Email and Correct Password");
 
         LoginPage.enterFields(EMAIL + "@email.com", ADMIN_PASSWORD);
 
-        Then("Wait for Error");
-        LoginPage.assertError();
+        Then("Check for Error to Appear");
+        Assert.assertTrue(LoginPage.assertError(), "No Error Appeared");
         LoginPage.clearFields();
 
         When("LoginPage Case - Correct Email and Invalid Password");
         LoginPage.enterFields(ADMIN_LOGIN, PASSWORD);
 
-        Then("Wait for Error");
-        LoginPage.assertError();
+        Then("Check for Error to Appear");
+        Assert.assertTrue(LoginPage.assertError(), "No Error Appeared");
         LoginPage.clearFields();
 
         When("LoginPage Case - Valid Email and Password");

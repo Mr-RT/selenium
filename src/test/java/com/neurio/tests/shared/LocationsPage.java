@@ -48,15 +48,25 @@ public class LocationsPage extends Browser {
      * @param location given location
      */
     public static void selectLocation(String location){
-        List<WebElement> elementsList = getElementsByCSS(StringRef.SETTINGS_LIST_ITEMS_CSS_SELECTOR);
+        List<WebElement> elementsList = getElementsByCSS(StringRef.LOCATION_LIST_ITEMS_CLASS_NAME);
         elementListHelper(elementsList, location);
+    }
+
+    /**
+     * Selects first location found with the given index in the locations list (index 1 based)
+     * @param number given index
+     */
+    public static void selectLocation(int number){
+        List<WebElement> elementsList = getElementsByCSS(StringRef.LOCATION_LIST_ITEMS_CSS_SELECTOR);
+        WebElement locationElement = elementsList.get(number + 1);
+        locationElement.click();
     }
 
     /**
      * Inputs a new location name
      * @param newName New location name
      */
-    public static void changeLocationName(String newName){
+    public static void setLocationName(String newName){
         getElementByName(StringRef.NAME).clear();
         getElementByName(StringRef.NAME).sendKeys(newName);
     }
@@ -65,76 +75,138 @@ public class LocationsPage extends Browser {
      * Inputs a new time zone
      * @param timezone New time zone
      */
-    public static void changeTimezone(String timezone){
+    public static void setTimezone(String timezone){
         selectorFindHelper(StringRef.TIMEZONE, timezone);
     }
 
-    public static void changePostalCode(String postalCode) {
-        getElementByName(StringRef.POSTAL_CODE).clear();
-        getElementByName(StringRef.POSTAL_CODE).sendKeys(postalCode);
+    /**
+     * Inputs a new postal code
+     * @param postalCode New postal code
+     */
+    public static void setPostalCode(String postalCode) {
+        Common.enterValueInElementByName(StringRef.POSTAL_CODE, postalCode);
     }
 
-    public static void changeTypeOfHome(String homeType){
+    /**
+     * Inputs a new home type
+     * @param homeType New home type
+     */
+    public static void setTypeOfHome(String homeType){
         selectorFindHelper(StringRef.HOME_TYPE, homeType);
     }
 
-    public static void changeSizeOfHome(String homeSize){
-        getElementByName(StringRef.HOME_SIZE).clear();
-        getElementByName(StringRef.HOME_SIZE).sendKeys(homeSize);
+    /**
+     * Inputs a new home size
+     * @param homeSize New home size
+     */
+    public static void setSizeOfHome(String homeSize){
+        Common.enterValueInElementByName(StringRef.HOME_SIZE, homeSize);
     }
 
-    public static void changeNumberOfPeople(String number){
-        getElementByName(StringRef.RESIDENTS).clear();
-        getElementByName(StringRef.RESIDENTS).sendKeys(number);
+    /**
+     * Inputs new number of people
+     * @param number New number of people
+     */
+    public static void setNumberOfPeople(String number){
+        Common.enterValueInElementByName(StringRef.RESIDENTS, number);
     }
 
+    /**
+     * Inputs a new always on target
+     * @param target New always on target
+     */
     public static void setAlwaysOnTarget(String target){
-        getElementByName(StringRef.ALWAYS_ON_TARGET).clear();
-        getElementByName(StringRef.ALWAYS_ON_TARGET).sendKeys(target);
+        Common.enterValueInElementByName(StringRef.ALWAYS_ON_TARGET, target);
     }
 
+    /**
+     * Inputs a new budget
+     * @param budget New Budget
+     */
     public static void setBudget(String budget){
-        getElementByName(StringRef.BUDGET).clear();
-        getElementByName(StringRef.BUDGET).sendKeys(budget);
+        Common.enterValueInElementByName(StringRef.BUDGET, budget);
     }
 
+    /**
+     * Inputs a new biling cycle start day
+     * @param day New start day
+     */
     public static void setBillingCycleStart(int day){
         selectorFindHelper(StringRef.BILLING_CYCLE_DAY, String.valueOf(day));
     }
 
+    /**
+     * Inputs a new fixed charges
+     * @param cost New fixed charges cost
+     */
     public static void setFixedCharges(String cost){
-        getElementByName(StringRef.FIXED_CHARGE).clear();
-        getElementByName(StringRef.FIXED_CHARGE).sendKeys(cost);
+        Common.enterValueInElementByName(StringRef.FIXED_CHARGE, cost);
     }
 
+    /**
+     * Inputs a new billing type
+     * @param type New billing plan type
+     */
     public static void setBillingPlanType(String type){
         selectorFindHelper(StringRef.BILLING_TYPE, type);
     }
 
+    /**
+     * Inputs a new energy price rate
+     * @param rate New energy price rate
+     */
     public static void setEnergyPrice(String rate){
-        getElementByName(StringRef.ENERGY_RATE).clear();
-        getElementByName(StringRef.ENERGY_RATE).sendKeys(rate);
+        Common.enterValueInElementByName(StringRef.ENERGY_RATE, rate);
     }
 
+    /**
+     * Inputs a new number of tiers
+     * @param tier New number of tiers
+     */
     public static void setNumberOfTiers(int tier){
-        String tierString = String.valueOf(tier);
-        selectorFindHelper(StringRef.NUM_TIERS, tierString);
+        selectorFindHelper(StringRef.NUM_TIERS, String.valueOf(tier));
     }
 
+    /**
+     * Toggles the weekend option on or off
+     * @param toggleOn Choose to toggle on or off
+     */
     public static void toggleWeekendPeakPricing(boolean toggleOn){
         if(getElementByName(StringRef.WEEKENDS).isSelected() != toggleOn){
             getElementByName(StringRef.WEEKENDS).click();
         }
     }
 
+    /**
+     * Inputs a new Tier 1 detail
+     * @param detail New Tier 1 Detail
+     */
     public static void setTier1Detail(String detail){
-        getElementByName(StringRef.TIER_1_DETAILS).clear();
-        getElementByName(StringRef.TIER_1_DETAILS).sendKeys(detail);
+        Common.enterValueInElementByName(StringRef.TIER_1_DETAILS, detail);
     }
 
+    /**
+     * Inputs a new Tier 1 rate
+     * @param rate New Tier 1 Rate
+     */
+    public static void setTier1EnergyRates(String rate){
+        Common.enterValueInElementByName(StringRef.TIER_1_ENERGY_RATES, rate);
+    }
+
+    /**
+     * Inputs a new Tier 1 rate
+     * @param rate New Tier 1 Rate
+     */
+    public static void setTier2EnergyRates(String rate){
+        Common.enterValueInElementByName(StringRef.TIER_2_ENERGY_RATES, rate);
+    }
+
+    /**
+     * Inputs a new tax rate
+     * @param tax New tax rate
+     */
     public static void setTaxes(Double tax) {
-        getElementByName(StringRef.TAX_RATE).clear();
-        getElementByName(StringRef.TAX_RATE).sendKeys(String.valueOf(tax));
+        Common.enterValueInElementByName(StringRef.TAX_RATE, String.valueOf(tax));
     }
 
     /**

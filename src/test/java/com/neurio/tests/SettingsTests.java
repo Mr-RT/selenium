@@ -1,6 +1,7 @@
 package com.neurio.tests;
 
 import com.neurio.tests.shared.*;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
@@ -10,15 +11,14 @@ import org.testng.annotations.Test;
 public class SettingsTests extends BasicTest {
     String LOGIN = "robert+89891@neur.io";
     String PASSWORD = "kashani1234";
+    String ACCOUNT_NAME = "Robert89891";
+    String NEW_ACCOUNT_NAME = ACCOUNT_NAME + " NEW";
+    String BAD_ACCOUNT_NAME = "abcdefghijklmnopqrstuvuxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 
     @Test
     public void SettingsPageTest01() {
 
         String NEW_EMAIL = "robert+89892@neur.io";
-
-        String ACCOUNT_NAME = "Robert89891";
-        String NEW_ACCOUNT_NAME = ACCOUNT_NAME + " NEW";
-        String BAD_ACCOUNT_NAME = "abcdefghijklmnopqrstuvuxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         String BAD_PASSWORD = "123456";
         String NEW_PASSWORD = PASSWORD + "new";
 
@@ -33,7 +33,7 @@ public class SettingsTests extends BasicTest {
         AccountPage.changeAccountName(BAD_ACCOUNT_NAME);
 
         Then("It should fail");
-        AccountPage.checkForErrors();
+        Assert.assertTrue(Common.checkForError(), "Errors did not appear");
 
         When("I change the name, it should work and be checked later on in the test");
         AccountPage.changeAccountName(NEW_ACCOUNT_NAME);
@@ -41,14 +41,14 @@ public class SettingsTests extends BasicTest {
         AccountPage.changePassword(PASSWORD, BAD_PASSWORD);
 
         Then("It should fail");
-        AccountPage.checkForErrors();
+        Assert.assertTrue(Common.checkForError(), "Errors did not appear");
 
         When("I change the password, it should work and be checked later on in the test");
         AccountPage.changePassword(PASSWORD, NEW_PASSWORD);
 
         SettingsPage.signOut();
 
-        When("I sign in with the new password and check the new account nam");
+        When("I sign in with the new password and check the new account name");
         LoginPage.signIn(LOGIN, NEW_PASSWORD);
 
         UserBar.selectSettings();
@@ -67,13 +67,13 @@ public class SettingsTests extends BasicTest {
         ChangeEmailDialog.changeEmail(PASSWORD, LOGIN);
 
         Then("It should fail");
-        AccountPage.checkForErrors();
+        Assert.assertTrue(Common.checkForError(), "Errors did not appear");
 
         When("I set new email with wrong password");
         ChangeEmailDialog.changeEmail(BAD_PASSWORD, LOGIN);
 
         Then("It should fail");
-        AccountPage.checkForErrors();
+        Assert.assertTrue(Common.checkForError(), "Errors did not appear");
 
         When("I use new emails that do not match");
         ChangeEmailDialog.enterCurrentPassword(PASSWORD);
@@ -85,16 +85,25 @@ public class SettingsTests extends BasicTest {
         ChangeEmailDialog.submitChangeEmail();
 
         Then("It should fail");
-        AccountPage.checkForErrors();
+        Assert.assertTrue(Common.checkForError(), "Errors did not appear");
 
         ChangeEmailDialog.close();
+
+        SettingsPage.signOut();
 
         Report("Setting Page Test 01 Passed!");
     }
 
     @Test
     public void SettingsPageTest02() {
-        Report("Setting Page Test 01");
+        String LA = "Los_Angeles";
+        String NEW_YORK = "New_York";
+        String POSTAL_CODE = "V6B 1G4";
+        String NEW_POSTAL_CODE = "V5H 4N2";
+        String HOME_TYPE = "House";
+        String NEW_HOME_TYPE = "Condo";
+
+        Report("Setting Page Test 02");
 
         When("I login");
         LoginPage.signIn(LOGIN, PASSWORD);
@@ -102,6 +111,37 @@ public class SettingsTests extends BasicTest {
         UserBar.selectSettings();
         SettingsPage.selectSettingsTab(StringRef.SettingTab.LOCATIONS);
 
+        LocationsPage.selectLocation(1);
 
+        LocationsPage.setLocationName(BAD_ACCOUNT_NAME);
+        LocationsPage.saveChanges();
+        Assert.assertTrue(Common.checkForError(), "Bad Location Name Passed");
+
+        LocationsPage.setLocationName(NEW_ACCOUNT_NAME);
+        LocationsPage.saveChanges();
+        Assert.assertTrue(Common.checkForSuccess(), "Unable to save new Account Name");
+
+        LocationsPage.setTimezone(NEW_YORK);
+        LocationsPage.saveChanges();
+        Assert.assertTrue(Common.checkForSuccess(), "Unable to save new Time Zone");
+
+        LocationsPage.setPostalCode(NEW_POSTAL_CODE);
+        LocationsPage.saveChanges();
+        Assert.assertTrue(Common.checkForSuccess(), "Unable to save new Postal Code");
+
+        LocationsPage.setTypeOfHome(NEW_HOME_TYPE);
+        LocationsPage.saveChanges();
+        Assert.assertTrue(Common.checkForSuccess(), "Unable to save new Home Type");
+
+        //Reset
+        LocationsPage.setTimezone(LA);
+        LocationsPage.setPostalCode(POSTAL_CODE);
+        LocationsPage.setTypeOfHome(HOME_TYPE);
+
+        LocationsPage.saveChanges();
+
+        UserBar.selectTab(StringRef.Tab.HOME);
+
+        Report("Setting Page Test 02 Passed!");
     }
 }

@@ -1,9 +1,8 @@
 package com.neurio.tests;
 
 import com.neurio.tests.shared.BasicTest;
-import com.neurio.tests.shared.StringRef;
-import com.neurio.tests.shared.UserBar;
 import com.neurio.tests.shared.LoginPage;
+import com.neurio.tests.shared.UserBar;
 import org.testng.annotations.Test;
 
 /**

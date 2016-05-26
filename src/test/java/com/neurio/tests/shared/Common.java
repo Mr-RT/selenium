@@ -33,6 +33,12 @@ public class Common extends Browser{
         }
     }
 
+    /**
+     * Get properties from the the config properties file
+     * @param value - The particular value wanted
+     * @param defaultValue The default value given if method fails
+     * @return String property value
+     */
     public static String getPropertyValue(String value, String defaultValue){
         Properties prop = new Properties();
         String propFileName = "config.properties";
@@ -52,11 +58,66 @@ public class Common extends Browser{
     }
 
     /**
-     * Implicitly wait for an element to appear for 10 seconds
+     * Check for element to be on web page
      * @param selector - CSS selector for the element
+     * @return boolean true or false
      */
     public static boolean checkForElement(String selector){
         return driver.findElements(By.cssSelector(selector)).size() != 0;
+    }
+
+    /**
+     * Check for error to be on web page
+     * @return boolean true or false
+     */
+    public static boolean checkForError(){
+        try{
+            waitForErrors();
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Check for success to be on web page
+     * @return boolean true or false
+     */
+    public static boolean checkForSuccess(){
+        try{
+            waitForSuccess();
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Check if an error occurred on page
+     */
+    public static void waitForErrors(){
+        Common.waitForElementClass(StringRef.HAS_ERROR_CLASS_NAME);
+    }
+
+    /**
+     * Check if a success alert occurred on page
+     */
+    public static void waitForSuccess(){
+        Common.waitForElementClass(StringRef.ALERT_SUCCESS);
+    }
+
+    /**
+     * Enter value in a web element by name
+     * @param name - Name selector
+     * @param input - Input to be entered
+     */
+    public static void enterValueInElementByName(String name, String input){
+        getElementByName(name).clear();
+        getElementByName(name).sendKeys(input);
     }
 
     /**
