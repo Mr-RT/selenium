@@ -67,13 +67,8 @@ public class StringRef {
     public static final String ENERGY_RATE = "energyRate";
     public static final String NUM_TIERS = "numTiers";
     public static final String WEEKENDS = "weekends";
-    public static final String TIER_1_DETAILS = "pricingTiers-0-maxConsumption";
-    public static final String TIER_1_ENERGY_RATES = "pricingTiers-0-price";
-    public static final String TIER_2_ENERGY_RATES = "pricingTiers-0-price";
     public static final String OFF_PEAK_PRICE = "offPeakPrice";
-    public static final String PEAK_1_FROM = "peak-1-from";
-    public static final String PEAK_1_TO = "peak-1-to";
-    public static final String PEAK_1_RATE = "peak-1-price";
+
 
     //General Variables
     public static final String EMAIL = "email";
@@ -87,26 +82,72 @@ public class StringRef {
     public static final String HELP_BLOCK_CLASS_NAME = "help-block";
     public static final String OPTION = "option";
     public static final String ALERT_SUCCESS = "alert-success";
+    public static final String PRICING_TIERS = "pricingTiers-";
+    public static final String PEAK = "peak-";
 
+    /**
+     * Return a name string of the web element for the imputed Tier's details
+     * @param tier Tier
+     */
+    public static String getTierDetailsNameString(int tier){
+        return PRICING_TIERS + (tier + 1) + "-maxConsumption";
+    }
+
+    /**
+     * Return a name string of the web element for the imputed Tier's price
+     * @param tier Tier
+     */
+    public static String getTierEnergyRateNameString(int tier){
+        return PRICING_TIERS + (tier + 1)+ "-price";
+    }
+
+    /**
+     * Return a name string of the web element for the imputed Peak's From detail
+     * @param peak Peak
+     */
+    public static String getPeakFromString(int peak){
+        return PEAK + peak + "-from";
+    }
+
+    /**
+     * Return a name string of the web element for the imputed Peak's To detail
+     * @param peak Peak
+     */
+    public static String getPeakToString(int peak){
+        return PEAK + peak + "-to";
+    }
+
+    /**
+     * User Bar Tab Enums
+     */
     public enum Tab {
         HOME, LOCATION, HISTORY
     }
 
+    /**
+     * Maps User Bar Tab Enums to corresponding strings
+     */
     public static final Map<Tab, String> tabMapEnumToString;
     static {
-        tabMapEnumToString = new HashMap<Tab, String>();
+        tabMapEnumToString = new HashMap<>();
         tabMapEnumToString.put(Tab.HOME, "My Home");
         tabMapEnumToString.put(Tab.LOCATION, "Location");
         tabMapEnumToString.put(Tab.HISTORY, "History");
     }
 
+    /**
+     * Settings Tab Enums
+     */
     public enum SettingTab {
         ACCOUNT, LOCATIONS, APPLIANCES_PROFILE, APPS, EXPORT_DATA
     }
 
+    /**
+     * Maps Settings Bar Tab Enums to corresponding strings
+     */
     public static final Map<SettingTab, String> settingTabMapEnumToString;
     static {
-        settingTabMapEnumToString = new HashMap<SettingTab, String>();
+        settingTabMapEnumToString = new HashMap<>();
         settingTabMapEnumToString.put(SettingTab.ACCOUNT, "Account");
         settingTabMapEnumToString.put(SettingTab.LOCATIONS, "Locations");
         settingTabMapEnumToString.put(SettingTab.APPLIANCES_PROFILE, "Appliances Profile");

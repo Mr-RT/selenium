@@ -47,7 +47,7 @@ public class CalculatorTest extends BasicTest {
             }
         }
         catch (IOException e) {
-            System.out.println("exception happened - here's what I know: ");
+            System.out.println("Exception happened - Here's what I know: ");
             e.printStackTrace();
             Assert.fail(e.getMessage());
         }
@@ -61,11 +61,9 @@ public class CalculatorTest extends BasicTest {
         Then("I can change to a user");
         UserBar.adminSelectUserByNameID(SOLAR, SOLAR_ID);
 
-        String solarSavingsWeb = HomePage.getSolarSavings();
+        Double solarSavingsWeb = Double.parseDouble(HomePage.getSolarSavings());
         String[] calc = save.split(" ");
-        String solarCalculatedValue = calc[calc.length-1];
-
-        solarCalculatedValue = solarCalculatedValue.replace("$", "").substring(0, solarCalculatedValue.length() - 5);
+        Double solarCalculatedValue = Double.parseDouble(calc[calc.length-1].replaceAll("[^0-9.]", ""));
 
         Report("Solar Savings from the Web: " + solarSavingsWeb);
         Report("Solar Savings from Calculator: " + solarCalculatedValue);

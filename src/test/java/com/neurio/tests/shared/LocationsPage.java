@@ -178,27 +178,21 @@ public class LocationsPage extends Browser {
     }
 
     /**
-     * Inputs a new Tier 1 detail
+     * Inputs a new Tier detail
+     * @param tier Tier
      * @param detail New Tier 1 Detail
      */
-    public static void setTier1Detail(String detail){
-        Common.enterValueInElementByName(StringRef.TIER_1_DETAILS, detail);
+    public static void setTier1Detail(int tier, String detail){
+        Common.enterValueInElementByName(StringRef.getTierDetailsNameString(tier), detail);
     }
 
     /**
      * Inputs a new Tier 1 rate
+     * @param tier Tier
      * @param rate New Tier 1 Rate
      */
-    public static void setTier1EnergyRates(String rate){
-        Common.enterValueInElementByName(StringRef.TIER_1_ENERGY_RATES, rate);
-    }
-
-    /**
-     * Inputs a new Tier 1 rate
-     * @param rate New Tier 1 Rate
-     */
-    public static void setTier2EnergyRates(String rate){
-        Common.enterValueInElementByName(StringRef.TIER_2_ENERGY_RATES, rate);
+    public static void setTier1EnergyRates(int tier, String rate){
+        Common.enterValueInElementByName(StringRef.getTierEnergyRateNameString(tier), rate);
     }
 
     /**

@@ -31,8 +31,12 @@ To run a single test such as "AdminTest":
     
 All test files are located in com.neurio.tests folder.
 To change browsers, edit the config.properties file.
-To use Chrome Web Driver, use the Chrome Drivers provided 
-in the lib folder. Current Version is v2.21.
+After a test run, the HTML Test Report will be located in 
+/target/surefire-reports/emailable-report.html.
+Screenshots will be saved in the /target/web-failure-screenshots folder.
+Test Failure Screenshots will be saved in the /target/web-screenshots
+folder
+
 
 ## Contributing
 

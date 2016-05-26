@@ -53,6 +53,11 @@ public class ChangeEmailDialog extends Browser{
         getElementFromParentByClass(dialog, StringRef.CONFIRM_BUTTON_CLASS_NAME).click();
     }
 
+    /**
+     * Change Email Batch Method
+     * @param password Password
+     * @param newEmail New email to input
+     */
     public static void changeEmail(String password, String newEmail){
         enterCurrentPassword(password);
         enterNewEmail(newEmail);
