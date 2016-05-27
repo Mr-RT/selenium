@@ -13,6 +13,11 @@ public class AdminTest extends BasicTest{
 
     @Test
     public void AdminTest01() {
+
+    }
+
+    @Test(enabled = false)
+    public void AdminTest02() {
         String ADMIN_LOGIN = "admin@energy-aware.com";
         String ADMIN_PASSWORD = "bonny5_worktable";
         String WINDSOR = "windsor";
@@ -28,4 +33,6 @@ public class AdminTest extends BasicTest{
         UserBar.adminSelectUserByNameID(WINDSOR, WINDSOR_ID);
         Report("Admin Test Passed!");
     }
+
+
 }

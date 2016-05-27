@@ -15,7 +15,7 @@ Always write a JavaDoc comment above each method explaining it.
 
 Do not comment out code for later use. Use version code or branches for that.
 
-Never use a wait inside a test. Insert it in a helper method.
+Avoid using a wait inside a test method. Insert it in a helper method instead.
 
 Starting Method Curly Brackets should not have their own line ie. "public static void methodName() { ...".
 

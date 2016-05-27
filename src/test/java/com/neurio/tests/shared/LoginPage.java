@@ -10,6 +10,13 @@ import org.openqa.selenium.WebElement;
 public class LoginPage extends Browser{
 
     /**
+     * Implicitly wait for the login page to appear
+     */
+    private static void waitForLoginPage(){
+        Common.waitForElement(StringRef.LOGIN_SIGN_IN_CLASS_NAME);
+    }
+
+    /**
      * Load the login page
      */
     public static void loadLoginPage(){
@@ -46,20 +53,6 @@ public class LoginPage extends Browser{
     }
 
     /**
-     * Implicitly wait an error message to appear on login page
-     */
-    public static boolean assertError(){
-        try{
-            Common.waitForElement(StringRef.ERROR_ALERT_CSS_SELECTOR);
-        } catch(Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-
-    /**
      * Sign in successfully with a correct username and password
      * @param userName - The Username used
      * @param password - The Password used
@@ -78,12 +71,5 @@ public class LoginPage extends Browser{
 
         emailElement.clear();
         passwordElement.clear();
-    }
-
-    /**
-     * Implicitly wait for the login page to appear
-     */
-    public static void waitForLoginPage(){
-        Common.waitForElement(StringRef.LOGIN_SIGN_IN_CLASS_NAME);
     }
 }

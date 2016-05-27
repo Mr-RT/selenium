@@ -1,10 +1,7 @@
 package com.neurio.tests.shared;
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -64,6 +61,20 @@ public class Common extends Browser{
      */
     public static boolean checkForElement(String selector){
         return driver.findElements(By.cssSelector(selector)).size() != 0;
+    }
+
+    /**
+     * Implicitly wait an error alert to appear on page
+     */
+    public static boolean assertError(){
+        try{
+            Common.waitForElement(StringRef.ERROR_ALERT_CSS_SELECTOR);
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
     /**

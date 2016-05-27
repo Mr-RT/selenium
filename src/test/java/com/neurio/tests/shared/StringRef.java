@@ -19,7 +19,7 @@ public class StringRef {
     public static final String ADMIN_DROPDOWN_TOGGLE_CSS_SELECTOR = ".dropdown-toggle-multiple";
     public static final String ID_INPUT_CSS_SELECTOR = ".input-wrapper > input";
     public static final String ADMIN_DROPDOWN_MENU_CSS_SELECTOR = ".userbar-text .dropdown-menu";
-    public static final String ADMIN_SIGN_OUT_CSS_SELECTOR = ".fa-sign-out";
+    public static final String ADMIN_SIGN_OUT_CSS_SELECTOR = "#multiple-selects > ul > li > a";
     public static final String SETTINGS_CSS_SELECTOR = ".userbar-text > a";
 
     //Home Page Variables
@@ -63,12 +63,13 @@ public class StringRef {
     public static final String FIXED_CHARGE ="fixedCharge";
     public static final String BILLING_TYPE = "billingType";
     public static final String TAX_RATE = "taxRate";
-
     public static final String ENERGY_RATE = "energyRate";
     public static final String NUM_TIERS = "numTiers";
     public static final String WEEKENDS = "weekends";
     public static final String OFF_PEAK_PRICE = "offPeakPrice";
-
+    public static final String ADD_PEAK_BUTTON = ".pricing button";
+    public static final String PRICING_TIERS = "pricingTiers-";
+    public static final String PEAK = "peak-";
 
     //General Variables
     public static final String EMAIL = "email";
@@ -82,15 +83,14 @@ public class StringRef {
     public static final String HELP_BLOCK_CLASS_NAME = "help-block";
     public static final String OPTION = "option";
     public static final String ALERT_SUCCESS = "alert-success";
-    public static final String PRICING_TIERS = "pricingTiers-";
-    public static final String PEAK = "peak-";
+    public static final String ADD = "Add";
 
     /**
      * Return a name string of the web element for the imputed Tier's details
      * @param tier Tier
      */
     public static String getTierDetailsNameString(int tier){
-        return PRICING_TIERS + (tier + 1) + "-maxConsumption";
+        return PRICING_TIERS + (tier - 1) + "-maxConsumption";
     }
 
     /**
@@ -98,7 +98,7 @@ public class StringRef {
      * @param tier Tier
      */
     public static String getTierEnergyRateNameString(int tier){
-        return PRICING_TIERS + (tier + 1)+ "-price";
+        return PRICING_TIERS + (tier - 1)+ "-price";
     }
 
     /**
@@ -116,6 +116,15 @@ public class StringRef {
     public static String getPeakToString(int peak){
         return PEAK + peak + "-to";
     }
+
+    /**
+     * Return a name string of the web element for the imputed Peak's Price detail
+     * @param peak Peak
+     */
+    public static String getPeaPriceString(int peak){
+        return PEAK + peak + "-price";
+    }
+
 
     /**
      * User Bar Tab Enums
@@ -153,6 +162,24 @@ public class StringRef {
         settingTabMapEnumToString.put(SettingTab.APPLIANCES_PROFILE, "Appliances Profile");
         settingTabMapEnumToString.put(SettingTab.APPS, "Apps");
         settingTabMapEnumToString.put(SettingTab.EXPORT_DATA, "Export Data");
+    }
+
+    /**
+     * Billing Type Enums
+     */
+    public enum BillingType {
+        FLAT, TIERED, TIME_OF_USE
+    }
+
+    /**
+     * Maps Settings Bar Tab Enums to corresponding strings
+     */
+    public static final Map<BillingType, String> billingTypeMapEnumToString;
+    static {
+        billingTypeMapEnumToString = new HashMap<>();
+        billingTypeMapEnumToString.put(BillingType.FLAT, "Flat");
+        billingTypeMapEnumToString.put(BillingType.TIERED, "Tiered");
+        billingTypeMapEnumToString.put(BillingType.TIME_OF_USE, "Time of Use");
     }
 
 }

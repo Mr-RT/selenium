@@ -103,4 +103,16 @@ public class Browser {
     public static WebElement getElementFromParentByName(WebElement element, String name){
         return element.findElement(By.name(name));
     }
+
+    public static void refresh(){
+        driver.navigate().refresh();
+    }
+
+    public static void goBack(){
+        driver.navigate().back();
+    }
+
+    public static void goForward(){
+        driver.navigate().forward();
+    }
 }

@@ -1,6 +1,7 @@
 package com.neurio.tests;
 
 import com.neurio.tests.shared.BasicTest;
+import com.neurio.tests.shared.Common;
 import com.neurio.tests.shared.LoginPage;
 import com.neurio.tests.shared.UserBar;
 import org.testng.Assert;
@@ -26,7 +27,7 @@ public class LoginTest extends BasicTest {
         LoginPage.enterFields(EMAIL + "@email.com", PASSWORD);
 
         Then("Check for Error to Appear");
-        Assert.assertTrue(LoginPage.assertError(), "No Error Appeared");
+        Assert.assertTrue(Common.assertError(), "No Error Appeared");
         LoginPage.clearFields();
 
         When("LoginPage Case - Invalid Email and Correct Password");
@@ -34,14 +35,14 @@ public class LoginTest extends BasicTest {
         LoginPage.enterFields(EMAIL + "@email.com", ADMIN_PASSWORD);
 
         Then("Check for Error to Appear");
-        Assert.assertTrue(LoginPage.assertError(), "No Error Appeared");
+        Assert.assertTrue(Common.assertError(), "No Error Appeared");
         LoginPage.clearFields();
 
         When("LoginPage Case - Correct Email and Invalid Password");
         LoginPage.enterFields(ADMIN_LOGIN, PASSWORD);
 
         Then("Check for Error to Appear");
-        Assert.assertTrue(LoginPage.assertError(), "No Error Appeared");
+        Assert.assertTrue(Common.assertError(), "No Error Appeared");
         LoginPage.clearFields();
 
         When("LoginPage Case - Valid Email and Password");

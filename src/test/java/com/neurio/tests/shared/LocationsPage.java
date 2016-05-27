@@ -147,8 +147,8 @@ public class LocationsPage extends Browser {
      * Inputs a new billing type
      * @param type New billing plan type
      */
-    public static void setBillingPlanType(String type){
-        selectorFindHelper(StringRef.BILLING_TYPE, type);
+    public static void setBillingPlanType(StringRef.BillingType type){
+        selectorFindHelper(StringRef.BILLING_TYPE, StringRef.billingTypeMapEnumToString.get(type));
     }
 
     /**
@@ -168,6 +168,14 @@ public class LocationsPage extends Browser {
     }
 
     /**
+     * Inputs an off peak price
+     * @param price
+     */
+    public static void setOffPeakPrice(String price){
+        Common.enterValueInElementByName(StringRef.OFF_PEAK_PRICE, price);
+    }
+
+    /**
      * Toggles the weekend option on or off
      * @param toggleOn Choose to toggle on or off
      */
@@ -180,27 +188,69 @@ public class LocationsPage extends Browser {
     /**
      * Inputs a new Tier detail
      * @param tier Tier
-     * @param detail New Tier 1 Detail
+     * @param detail New Tier Detail
      */
-    public static void setTier1Detail(int tier, String detail){
+    public static void setTierDetail(int tier, String detail){
         Common.enterValueInElementByName(StringRef.getTierDetailsNameString(tier), detail);
     }
 
     /**
-     * Inputs a new Tier 1 rate
+     * Inputs a new Tier rate
      * @param tier Tier
-     * @param rate New Tier 1 Rate
+     * @param rate New Tier Rate
      */
-    public static void setTier1EnergyRates(int tier, String rate){
+    public static void setTierEnergyRates(int tier, String rate){
         Common.enterValueInElementByName(StringRef.getTierEnergyRateNameString(tier), rate);
+    }
+
+    /**
+     * Inputs a new Peak rate
+     * @param peak Peak
+     * @param rate New Tier Rate
+     */
+    public static void setPeakRate(int peak, String rate){
+        Common.enterValueInElementByName(StringRef.getPeaPriceString(peak), rate);
+    }
+
+    /**
+     * Remove Peak Period
+     */
+    public static void RemovePeakPeriod(){
+        getElementsByCSS(StringRef.ADD_PEAK_BUTTON).get(0).click();
+    }
+
+    /**
+     * Adds a new peak period
+     */
+    public static void addPeakPeriod(){
+        getElementByCSS(StringRef.ADD_PEAK_BUTTON).click();
+    }
+
+    /**
+     * Remove Peak Period
+     */
+    public static boolean checksIfAddPeriodIsThere(){
+        List<WebElement> elementList = getElementsByCSS(StringRef.ADD_PEAK_BUTTON);
+        boolean found = false;
+        for(WebElement element: elementList){
+            if(element.getText().contains(StringRef.ADD)){
+                found = true;
+                break;
+            }
+        }
+        return found;
+    }
+
+    public static boolean checksIfPeriodToPeriodIsEditable(int peak){
+        return getElementsByCSS(StringRef.getPeakToString(peak)).size() == 0;
     }
 
     /**
      * Inputs a new tax rate
      * @param tax New tax rate
      */
-    public static void setTaxes(Double tax) {
-        Common.enterValueInElementByName(StringRef.TAX_RATE, String.valueOf(tax));
+    public static void setTaxes(String tax) {
+        Common.enterValueInElementByName(StringRef.TAX_RATE, tax);
     }
 
     /**
