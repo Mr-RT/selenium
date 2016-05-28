@@ -72,18 +72,28 @@ public class StringRef {
     public static final String PEAK = "peak-";
 
     //General Variables
+    public static final String STAGING_HOME_PAGE = "https://staging.neur.io/";
+    public static final String PRODUCTION_HOME_PAGE = "https://my.neur.io/";
+    public static final String API_STAGING_URL_PREFIX = "https://api-staging.neur.io/v1/";
+    public static final String API_URL_PREFIX = "https://api.neur.io/v1/";
+    public static final String GRANT_TYPE = "grant_type";
+    public static final String CLIENT_ID = "client_id";
+    public static final String CLIENT_SECRET = "client_secret";
+    public static final String CLIENT_CREDENTIALS = "client_credentials";
+    public static final String ADMIN_CLIENT_ID = "m3jIFI3BQd6ZkdgYIBxrXg";
+    public static final String ADMIN_CLIENT_SECRET = "d7TF8aQ8THWdz03Q-Pf27g";
+
     public static final String EMAIL = "email";
     public static final String PASSWORD = "password";
     public static final String VALUE = "value";
     public static final String UNITS = "unit";
     public static final String NAME = "name";
     public static final String COST = "cost";
-    public static final String STAGING_HOME_PAGE = "https://staging.neur.io/";
-    public static final String PRODUCTION_HOME_PAGE = "https://my.neur.io/";
     public static final String HELP_BLOCK_CLASS_NAME = "help-block";
     public static final String OPTION = "option";
     public static final String ALERT_SUCCESS = "alert-success";
     public static final String ADD = "Add";
+    public static final String ACCESS_TOKEN = "access_token";
 
     /**
      * Return a name string of the web element for the imputed Tier's details
