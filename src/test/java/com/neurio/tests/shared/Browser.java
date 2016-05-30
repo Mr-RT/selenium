@@ -84,6 +84,10 @@ public class Browser {
         return driver.findElement(By.name(name));
     }
 
+    public static WebElement getElementByLinkText(String name){
+        return driver.findElement(By.linkText(name));
+    };
+
     public static List<WebElement> getElementsByCSS(String name){
         return driver.findElements(By.cssSelector(name));
     }
@@ -104,6 +108,16 @@ public class Browser {
         return element.findElement(By.name(name));
     }
 
+    /**
+     * Gets the title of the web page
+     */
+    public static String getTitle(){
+        return driver.getTitle();
+    }
+
+    /**
+     * These methods help the browser navigate
+     */
     public static void refresh(){
         driver.navigate().refresh();
     }

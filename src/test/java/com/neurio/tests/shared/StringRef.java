@@ -94,6 +94,14 @@ public class StringRef {
     public static final String ALERT_SUCCESS = "alert-success";
     public static final String ADD = "Add";
     public static final String ACCESS_TOKEN = "access_token";
+    public static final String ABOUT = "About";
+    public static final String SUPPORT_CENTRE = "Support Centre";
+    public static final String TERMS = "Terms";
+    public static final String PRIVACY = "Privacy";
+    public static final String PORTAL = "Portal";
+    public static final String ABOUT_PAGE_TITLE = "Neurio - Home Energy Monitor";
+    public static final String TERMS_PAGE_TITLE = "Terms of Use – Neurio";
+    public static final String PRIVACY_PAGE_TITLE = "Privacy – Neurio";
 
     /**
      * Return a name string of the web element for the imputed Tier's details

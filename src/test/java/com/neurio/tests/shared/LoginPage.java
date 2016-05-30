@@ -72,4 +72,12 @@ public class LoginPage extends Browser{
         emailElement.clear();
         passwordElement.clear();
     }
+
+    /**
+     * Click on link
+     * @param name - Name of the link
+     */
+    public static void clickOnLink(String name){
+        getElementByLinkText(name).click();
+    }
 }
