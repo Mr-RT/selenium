@@ -12,7 +12,7 @@ public class StringRef {
     //Login Page Variables
     public static final String SIGN_IN_BUTTON_CSS_SELECTOR = ".signin-button";
     public static final String ERROR_ALERT_CSS_SELECTOR = ".alert-error";
-    public static final String LOGIN_SIGN_IN_CLASS_NAME = ".signin";
+    public static final String LOGIN_SIGN_IN_CSS_SELECTOR = ".signin";
 
     //User Bar Variables
     public static final String USERNAME_TEXT_BOX_CSS_SELECTOR = ".userbar-text > span";
@@ -28,6 +28,8 @@ public class StringRef {
     public static final String HOME_PAGE_GENERATION_CLASS_NAME = "generation";
     public static final String TABS_CSS_SELECTOR = ".header > nav > a > span";
     public static final String SOLAR_SAVINGS_TEXT_CSS_SELECTOR = ".savings > span:nth-child(2)";
+    public static final String FORECAST_VALUE_SIGN_TEXT_CSS_SELECTOR = ".forecast-card .big-num span:nth-child(2)";
+    public static final String FORECAST_VALUE_TEXT_CSS_SELECTOR = ".forecast-card .big-num span:nth-child(3)";
 
     //Setting Page Variables
     public static final String SETTINGS_LIST_ITEMS_CSS_SELECTOR = ".settings-sidebar > .list > a";
@@ -199,5 +201,23 @@ public class StringRef {
         billingTypeMapEnumToString.put(BillingType.TIERED, "Tiered");
         billingTypeMapEnumToString.put(BillingType.TIME_OF_USE, "Time of Use");
     }
+
+    /**
+     * Calculator Enums
+     */
+    public enum Calculator {
+        Forecast, BudgetLine, SolarSavings
+    }
+    /**
+     * Maps Settings Bar Tab Enums to corresponding strings
+     */
+    public static final Map<Calculator, String> calculatorMapEnumToFile;
+    static {
+        calculatorMapEnumToFile = new HashMap<>();
+        calculatorMapEnumToFile.put(Calculator.Forecast, "ForecastCalculator.py ");
+        calculatorMapEnumToFile.put(Calculator.SolarSavings, "SolarSavingsCalculator.py ");
+        calculatorMapEnumToFile.put(Calculator.BudgetLine, "BudgetLineCalculator.py ");
+    }
+
 
 }

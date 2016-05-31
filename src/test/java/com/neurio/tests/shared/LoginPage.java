@@ -13,7 +13,7 @@ public class LoginPage extends Browser{
      * Implicitly wait for the login page to appear
      */
     private static void waitForLoginPage(){
-        Common.waitForElement(StringRef.LOGIN_SIGN_IN_CLASS_NAME);
+        Common.waitForElement(StringRef.LOGIN_SIGN_IN_CSS_SELECTOR);
     }
 
     /**

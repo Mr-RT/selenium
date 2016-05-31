@@ -6,8 +6,11 @@ A Selenium based automated test project for the Neurio Web App.
 
 ## Installation
 
-Maven and a web browser such as Mozilla Firefox needs to be 
+Maven, Python and a web browser such as Mozilla Firefox needs to be 
 installed to run this project.
+
+The qa project(https://github.com/neurio/qa) must also be installed 
+on your system.
 
 
 The project uses the following dependencies:
@@ -15,7 +18,13 @@ The project uses the following dependencies:
 * Selenium 2.53.0
 * Maven Surefire Plugin 2.18.1
 
-1. Pull the code from GitHub.
+1. Pull the code from GitHub and put it in the same directory as 
+the qa project.
+2. Set a System Variable on your system called "PROJECT_PATH", where
+the selenium-web and qa projects are located, such as, 
+"C:\Users\Me\Projects".
+3. Check the config.properties and make sure the settings are correct 
+such as Operating System (os).
 
 ## Usage
 

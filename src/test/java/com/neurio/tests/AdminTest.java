@@ -1,7 +1,6 @@
 package com.neurio.tests;
 
 import com.neurio.tests.shared.*;
-import org.json.JSONObject;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -12,19 +11,18 @@ import java.util.HashMap;
  */
 public class AdminTest extends BasicTest{
 
+    String authToken = "";
+
     @Test
     public void AdminTest01() {
+        authToken = API.getAuthToken();
         HashMap<String, String> map = new HashMap<>();
         map.put(StringRef.GRANT_TYPE, StringRef.CLIENT_CREDENTIALS);
         map.put(StringRef.CLIENT_ID, StringRef.ADMIN_CLIENT_ID);
         map.put(StringRef.CLIENT_SECRET, StringRef.ADMIN_CLIENT_SECRET);
         try {
-            String response = Common.postRequest(false, "" ,
-                    StringRef.API_STAGING_URL_PREFIX + "token", map);
-            JSONObject obj = new JSONObject(response);
-            String token = obj.getString(StringRef.ACCESS_TOKEN);
-
-            response = Common.getRequest(token,  StringRef.API_STAGING_URL_PREFIX + "status");
+            String response = API.getRequest(authToken, StringRef.API_STAGING_URL_PREFIX +
+                    "locations/yVqQsLETRk2C1D1EjlgEjA");
             System.out.println(response);
         } catch(Exception e){
             System.out.println(e.getMessage());

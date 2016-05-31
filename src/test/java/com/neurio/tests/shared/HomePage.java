@@ -51,4 +51,9 @@ public class HomePage extends Browser{
     public static String getSolarSavings(){
         return getElementByCSS(StringRef.SOLAR_SAVINGS_TEXT_CSS_SELECTOR).getText();
     }
+
+    public static String getForecastValue(){
+        return getElementByCSS(StringRef.FORECAST_VALUE_SIGN_TEXT_CSS_SELECTOR).getText() +
+                getElementByCSS(StringRef.FORECAST_VALUE_TEXT_CSS_SELECTOR).getText();
+    }
 }
