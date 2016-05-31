@@ -30,12 +30,12 @@ public class BasicTest extends Browser{
     @AfterClass
     public void afterTest() {
         //Sign out
-        if(Common.checkForElement(StringRef.ADMIN_DROPDOWN_TOGGLE_CSS_SELECTOR)){
-            UserBar.signOut();
-        } else if(Common.checkForElement(StringRef.LOGIN_SIGN_IN_CSS_SELECTOR)) {
-            Common.waitForElement(StringRef.LOGIN_SIGN_IN_CSS_SELECTOR);
-        } else {
-            SettingsPage.signOut();
+        if(!Common.checkForElement(StringRef.LOGIN_SIGN_IN_CSS_SELECTOR)){
+            if(Common.checkForElement(StringRef.ADMIN_DROPDOWN_TOGGLE_CSS_SELECTOR)){
+                UserBar.signOut();
+            } else {
+                SettingsPage.signOut();
+            }
         }
     }
 

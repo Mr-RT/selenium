@@ -25,10 +25,10 @@ public class Calculator {
                 command = "cmd.exe /c python %PROJECT_PATH%\\qa\\"+ calculatorFile + id;
                 break;
             case "mac":
-                command = "python $PROJECT_PATH\\qa\\"+ calculatorFile + id;
+                command = "python $PROJECT_PATH/qa/"+ calculatorFile + id;
                 break;
             case "unix":
-                command = "python $PROJECT_PATH\\qa\\"+ calculatorFile + id;
+                command = "python $PROJECT_PATH/qa/"+ calculatorFile + id;
                 break;
             default:
                 command = "cmd.exe /c python %PROJECT_PATH%\\qa\\"+ calculatorFile + id;

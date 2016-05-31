@@ -106,7 +106,8 @@ public class API {
                                      boolean authorized,
                                      String token,
                                      String url,
-                                     HashMap<String, String> reqBody) throws Exception {
+                                     HashMap<String, String> reqBody,
+                                     JSONObject json) throws Exception {
 
         URL obj = new URL(url);
         HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
@@ -121,7 +122,7 @@ public class API {
         if(authorized){
             con.setRequestProperty("Content-Type", "application/json");
             con.setRequestProperty("Authorization", "Bearer " + token);
-            urlParameters = getJSONPostDataString(reqBody);
+            urlParameters = json.toString();
         } else {
             con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             urlParameters = getPostDataString(reqBody);
@@ -137,20 +138,20 @@ public class API {
         wr.close();
 
         int responseCode = con.getResponseCode();
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuilder response = new StringBuilder();
+
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+
         if(responseCode == 200) {
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(con.getInputStream()));
-            String inputLine;
-            StringBuilder response = new StringBuilder();
-
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-            }
-            in.close();
-
             return response.toString();
         } else {
-            return "";
+            return "Error: \n" + response.toString();
         }
     }
 
@@ -158,13 +159,13 @@ public class API {
      * Send an authorized PATCH request
      * @param token - Authorization token
      * @param url - URL of GET Request
-     * @param reqBody - POST Request Body
+     * @param json - POST Request Body
      * @return String - Response from API Call
      */
     public static String authPatchRequest(String token,
                                      String url,
-                                     HashMap<String, String> reqBody) throws Exception {
-        return postRequest(false, true , token, url, reqBody);
+                                     JSONObject json) throws Exception {
+        return postRequest(false, true , token, url, new HashMap<>(), json);
     }
 
     public static String getAuthToken(){
@@ -175,7 +176,7 @@ public class API {
         String authToken = "";
         try {
             String response = postRequest(true, false, "" ,
-                    StringRef.API_STAGING_URL_PREFIX + "oauth2/token", map);
+                    StringRef.API_STAGING_URL_PREFIX + "oauth2/token", map, new JSONObject());
             JSONObject obj = new JSONObject(response);
             String token = obj.getString(StringRef.ACCESS_TOKEN);
             authToken = token;
