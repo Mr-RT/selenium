@@ -1,11 +1,11 @@
 package com.neurio.tests;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import com.neurio.tests.shared.*;
 import org.testng.annotations.Test;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Robert on 2016-05-17.
@@ -29,11 +29,11 @@ public class AdminTest extends BasicTest{
         } catch(Exception e){
             System.out.println(e.getMessage());
         }
-        List<Set<String>> listOfLists = Lists.newArrayList();
-        listOfLists.add(new LinkedHashSet<>(Arrays.asList("Original Soup", "Spicy Soup", "Watercress Soup", "Thai Spicy Soup", "Malaysia Spicy Soup")));
-        listOfLists.add(new LinkedHashSet<>(Arrays.asList("Udon", "Ramen", "Egg Noodle", "Flat Rice Noodle", "Vermicelli", "Instant Noodle")));
-        listOfLists.add(new LinkedHashSet<>(Arrays.asList("Fish Cube", "Fish Ball", "Ham", "Squid", "Seaweed")));
-        Set<List<String>> combo = findAllCombinations(listOfLists);
+        List<List<String>> listOfLists = Lists.newArrayList();
+        listOfLists.add(Lists.newArrayList("Original Soup", "Spicy Soup", "Watercress Soup", "Thai Spicy Soup", "Malaysia Spicy Soup"));
+        listOfLists.add(Lists.newArrayList("Udon", "Ramen", "Egg Noodle", "Flat Rice Noodle", "Vermicelli", "Instant Noodle"));
+        listOfLists.add(Lists.newArrayList("Fish Cube", "Fish Ball", "Ham", "Squid", "Seaweed"));
+        List<List<String>> combo = findAllCombinations(listOfLists);
         System.out.println(combo);
         System.out.println("Generated " + combo.size() + " combinations");
     }
@@ -57,7 +57,7 @@ public class AdminTest extends BasicTest{
     }
 
 
-    private Set<List<String>> findAllCombinations(List<Set<String>> arrays){
-        return Sets.cartesianProduct(arrays);
+    private List<List<String>> findAllCombinations(List<List<String>> arrays){
+        return Lists.cartesianProduct(arrays);
     }
 }
