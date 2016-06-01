@@ -1,10 +1,11 @@
 package com.neurio.tests;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.neurio.tests.shared.*;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * Created by Robert on 2016-05-17.
@@ -28,6 +29,13 @@ public class AdminTest extends BasicTest{
         } catch(Exception e){
             System.out.println(e.getMessage());
         }
+        List<Set<String>> listOfLists = Lists.newArrayList();
+        listOfLists.add(new LinkedHashSet<>(Arrays.asList("Original Soup", "Spicy Soup", "Watercress Soup", "Thai Spicy Soup", "Malaysia Spicy Soup")));
+        listOfLists.add(new LinkedHashSet<>(Arrays.asList("Udon", "Ramen", "Egg Noodle", "Flat Rice Noodle", "Vermicelli", "Instant Noodle")));
+        listOfLists.add(new LinkedHashSet<>(Arrays.asList("Fish Cube", "Fish Ball", "Ham", "Squid", "Seaweed")));
+        Set<List<String>> combo = findAllCombinations(listOfLists);
+        System.out.println(combo);
+        System.out.println("Generated " + combo.size() + " combinations");
     }
 
     @Test(enabled = false)
@@ -49,34 +57,7 @@ public class AdminTest extends BasicTest{
     }
 
 
-    private ArrayList<ArrayList<String>> findAllCombinations(ArrayList<ArrayList<String>> arrays){
-        ArrayList<ArrayList<String>> combinations = new ArrayList<>();
-        for(String item1: arrays.get(0)){
-            for(String item2: arrays.get(1)){
-                for(String item3: arrays.get(2)){
-                    for(String item4: arrays.get(3)){
-                        for(String item5: arrays.get(4)){
-                            for(String item6: arrays.get(5)){
-                                for(String item7: arrays.get(6)){
-                                    ArrayList<String> temp = new ArrayList<String>() {
-                                        {
-                                            add(item1);
-                                            add(item2);
-                                            add(item3);
-                                            add(item4);
-                                            add(item5);
-                                            add(item6);
-                                            add(item7);
-                                        }
-                                    };
-                                    combinations.add(temp);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return combinations;
+    private Set<List<String>> findAllCombinations(List<Set<String>> arrays){
+        return Sets.cartesianProduct(arrays);
     }
 }
