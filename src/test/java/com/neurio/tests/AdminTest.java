@@ -1,11 +1,9 @@
 package com.neurio.tests;
 
-import com.google.common.collect.Lists;
 import com.neurio.tests.shared.*;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by Robert on 2016-05-17.

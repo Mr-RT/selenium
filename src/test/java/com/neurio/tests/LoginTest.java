@@ -1,7 +1,6 @@
 package com.neurio.tests;
 
 import com.neurio.tests.shared.*;
-import com.sun.jna.platform.win32.Netapi32Util;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

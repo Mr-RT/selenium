@@ -87,9 +87,8 @@ public class UserBar extends Browser{
      * Sign out of the web app
      */
     public static void signOut(){
-        WebElement adminMenuToggleElement = driver.findElement(
-                By.cssSelector(StringRef.ADMIN_DROPDOWN_TOGGLE_CSS_SELECTOR));
-        adminMenuToggleElement.click();
+        Common.waitForElementDisplayed(StringRef.ADMIN_DROPDOWN_TOGGLE_CSS_SELECTOR);
+        getElementByCSS(StringRef.ADMIN_DROPDOWN_TOGGLE_CSS_SELECTOR).click();
 
         WebElement adminMenuElement = driver.findElement(By.cssSelector(StringRef.ADMIN_DROPDOWN_MENU_CSS_SELECTOR));
         adminMenuElement.findElement(By.cssSelector(StringRef.ADMIN_SIGN_OUT_CSS_SELECTOR)).click();

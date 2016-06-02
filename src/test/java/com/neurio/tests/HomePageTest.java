@@ -1,6 +1,8 @@
 package com.neurio.tests;
 
-import com.neurio.tests.shared.*;
+import com.neurio.tests.shared.BasicTest;
+import com.neurio.tests.shared.HomePage;
+import com.neurio.tests.shared.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
