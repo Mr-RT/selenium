@@ -25,6 +25,7 @@ public class SettingsTest extends BasicTest {
         Report("Setting Page Test 01");
 
         When("I login");
+        LoginPage.loadLoginPage();
         LoginPage.signIn(LOGIN, PASSWORD);
         UserBar.selectSettings();
         When("I change name to one longer than 50 characters");

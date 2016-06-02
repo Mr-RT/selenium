@@ -19,6 +19,7 @@ public class LoginTest extends BasicTest {
 
         Report("Login Test");
 
+        LoginPage.loadLoginPage();
         When("I click on the Support Centre Link");
         LoginPage.clickOnLink(StringRef.SUPPORT_CENTRE);
         Then("I am at the support page");

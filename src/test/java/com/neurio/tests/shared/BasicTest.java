@@ -20,20 +20,6 @@ import java.io.IOException;
 
 public class BasicTest extends Browser{
 
-    @BeforeClass
-    public void beforeTest() {
-        //Go to the home page
-        LoginPage.loadLoginPage();
-        //Sign out of the app has not sign out yet
-        if(!Common.checkForElement(StringRef.LOGIN_SIGN_IN_CSS_SELECTOR)){
-            if(Common.checkForElement(StringRef.ADMIN_DROPDOWN_TOGGLE_CSS_SELECTOR)){
-                UserBar.signOut();
-            } else {
-                SettingsPage.signOut();
-            }
-        }
-    }
-
     @AfterMethod
     public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
         if (testResult.getStatus() == ITestResult.FAILURE) {
