@@ -17,6 +17,7 @@ public class StringRef {
     //User Bar Variables
     public static final String USERNAME_TEXT_BOX_CSS_SELECTOR = ".userbar-text > span";
     public static final String ADMIN_DROPDOWN_TOGGLE_CSS_SELECTOR = ".dropdown-toggle-multiple";
+    public static final String ADMIN_INPUT_CLASS_NAME = "admin-input";
     public static final String ID_INPUT_CSS_SELECTOR = ".input-wrapper > input";
     public static final String ADMIN_DROPDOWN_MENU_CSS_SELECTOR = ".userbar-text .dropdown-menu";
     public static final String ADMIN_SIGN_OUT_CSS_SELECTOR = "#multiple-selects > ul > li > a";

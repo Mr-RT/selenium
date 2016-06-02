@@ -1,5 +1,6 @@
 package com.neurio.tests.shared;
 
+import com.google.common.collect.Lists;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
@@ -12,6 +13,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -185,6 +187,14 @@ public class Common extends Browser{
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Find the Cartasian Product from a list of lists
+     * @param arrays - List of lists to combine
+     */
+    public List<List<String>> findAllCombinations(List<List<String>> arrays){
+        return Lists.cartesianProduct(arrays);
     }
 
 }

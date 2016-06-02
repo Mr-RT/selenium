@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
  */
 public class HomePageTest extends BasicTest {
 
-    @Test
+    @Test(enabled = false)
     public void HomePageTest01() {
         String LOGIN = "robert+89891@neur.io";
         String PASSWORD = "kashani1234";
@@ -26,10 +26,6 @@ public class HomePageTest extends BasicTest {
 
         Assert.assertEquals(HomePage.getCurrentGenerationValue(), 0, "Current Generation Value is not 0; it is " +
                 HomePage.getCurrentGenerationValue());
-
-        UserBar.selectTab(StringRef.Tab.HISTORY);
-
-        UserBar.selectTab(StringRef.Tab.HOME);
 
         Report("Home Page Test Passed");
     }

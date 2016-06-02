@@ -29,13 +29,6 @@ public class AdminTest extends BasicTest{
         } catch(Exception e){
             System.out.println(e.getMessage());
         }
-        List<List<String>> listOfLists = Lists.newArrayList();
-        listOfLists.add(Lists.newArrayList("Original Soup", "Spicy Soup", "Watercress Soup", "Thai Spicy Soup", "Malaysia Spicy Soup"));
-        listOfLists.add(Lists.newArrayList("Udon", "Ramen", "Egg Noodle", "Flat Rice Noodle", "Vermicelli", "Instant Noodle"));
-        listOfLists.add(Lists.newArrayList("Fish Cube", "Fish Ball", "Ham", "Squid", "Seaweed"));
-        List<List<String>> combo = findAllCombinations(listOfLists);
-        System.out.println(combo);
-        System.out.println("Generated " + combo.size() + " combinations");
     }
 
     @Test(enabled = false)
@@ -54,10 +47,5 @@ public class AdminTest extends BasicTest{
         Then("I can change to a user");
         UserBar.adminSelectUserByNameID(WINDSOR, WINDSOR_ID);
         Report("Admin Test Passed!");
-    }
-
-
-    private List<List<String>> findAllCombinations(List<List<String>> arrays){
-        return Lists.cartesianProduct(arrays);
     }
 }

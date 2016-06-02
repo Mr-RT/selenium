@@ -1,6 +1,7 @@
 package com.neurio.tests.shared;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -45,9 +46,7 @@ public class UserBar extends Browser{
      * @param userName User Name given
      */
     public static void assertUserName(String userName){
-        WebElement adminTextElement = driver.findElement(By.cssSelector(StringRef.USERNAME_TEXT_BOX_CSS_SELECTOR));
-
-        String adminText = adminTextElement.getText();
+        String adminText = getElementByCSS(StringRef.USERNAME_TEXT_BOX_CSS_SELECTOR).getText();
 
         Assert.assertEquals(adminText, userName, userName + " != " + adminText);
     }
@@ -56,9 +55,7 @@ public class UserBar extends Browser{
      * Toggle the User Menu in the User Bar to appear
      */
     public static void toggleUserMenu(){
-        WebElement adminMenuToggleElement = driver.findElement(
-                By.cssSelector(StringRef.ADMIN_DROPDOWN_TOGGLE_CSS_SELECTOR));
-        adminMenuToggleElement.click();
+        getElementByCSS(StringRef.ADMIN_DROPDOWN_TOGGLE_CSS_SELECTOR).click();
     }
 
     /**
@@ -67,11 +64,21 @@ public class UserBar extends Browser{
      * @param  id - Click on the correct ID found in the search
      */
     public static void adminSelectUserByNameID(String name, String id){
-        WebElement userInputElement = driver.findElement(By.cssSelector(StringRef.ID_INPUT_CSS_SELECTOR));
+        getElementByCSS(StringRef.ID_INPUT_CSS_SELECTOR).sendKeys(name);
 
-        userInputElement.sendKeys(name);
+        getElementByID(id).click();
 
-        driver.findElement(By.id(id)).click();
+        HomePage.waitForHomePage();
+    }
+
+    /**
+     * Open an account as admin user
+     * @param email - Type in email in input to open account
+     */
+    public static void adminSelectUserByEmail(String email){
+        getElementByClassName(StringRef.ADMIN_INPUT_CLASS_NAME).sendKeys(email);
+
+        getElementByClassName(StringRef.ADMIN_INPUT_CLASS_NAME).sendKeys(Keys.RETURN);
 
         HomePage.waitForHomePage();
     }
