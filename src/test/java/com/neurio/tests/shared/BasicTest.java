@@ -5,7 +5,6 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestResult;
 import org.testng.Reporter;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 
@@ -25,11 +24,7 @@ public class BasicTest extends Browser{
     public void beforeTest() {
         //Go to the home page
         LoginPage.loadLoginPage();
-    }
-
-    @AfterClass
-    public void afterTest() {
-        //Sign out
+        //Sign out of the app has not sign out yet
         if(!Common.checkForElement(StringRef.LOGIN_SIGN_IN_CSS_SELECTOR)){
             if(Common.checkForElement(StringRef.ADMIN_DROPDOWN_TOGGLE_CSS_SELECTOR)){
                 UserBar.signOut();

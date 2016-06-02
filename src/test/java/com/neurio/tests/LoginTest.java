@@ -1,6 +1,7 @@
 package com.neurio.tests;
 
 import com.neurio.tests.shared.*;
+import com.sun.jna.platform.win32.Netapi32Util;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -14,7 +15,6 @@ public class LoginTest extends BasicTest {
     public void LoginPageTest() {
         String EMAIL = "email";
         String PASSWORD = "password";
-        String ADMIN = "admin";
         String ADMIN_LOGIN = "admin@energy-aware.com";
         String ADMIN_PASSWORD = "bonny5_worktable";
 
@@ -70,6 +70,8 @@ public class LoginTest extends BasicTest {
 
         When("LoginPage Case - Valid Email and Password");
         LoginPage.signIn(ADMIN_LOGIN, ADMIN_PASSWORD);
+
+        UserBar.signOut();
 
         Report("Login Test passed!");
     }

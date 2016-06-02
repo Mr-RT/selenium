@@ -15,7 +15,7 @@ public class AdminTest extends BasicTest{
 
     String authToken = "";
 
-    @Test
+    @Test(enabled = false)
     public void AdminTest01() {
         authToken = API.getAuthToken();
         HashMap<String, String> map = new HashMap<>();
