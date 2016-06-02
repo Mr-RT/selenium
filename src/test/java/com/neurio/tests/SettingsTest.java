@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
  * Created by Robert on 5/24/2016.
  * Settings Test
  */
-public class SettingsTests extends BasicTest {
+public class SettingsTest extends BasicTest {
     String LOGIN = "robert+89891@neur.io";
     String PASSWORD = "kashani1234";
     String ACCOUNT_NAME = "Robert89891";
