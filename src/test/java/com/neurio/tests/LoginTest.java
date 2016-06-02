@@ -71,9 +71,6 @@ public class LoginTest extends BasicTest {
         When("LoginPage Case - Valid Email and Password");
         LoginPage.signIn(ADMIN_LOGIN, ADMIN_PASSWORD);
 
-        Then("Check if user name is correct in the top right of screen");
-        UserBar.assertUserName(ADMIN);
-
         Report("Login Test passed!");
     }
 }
