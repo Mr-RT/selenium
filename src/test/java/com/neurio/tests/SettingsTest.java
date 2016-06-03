@@ -27,7 +27,7 @@ public class SettingsTest extends BasicTest {
         When("I login");
         LoginPage.loadLoginPage();
         LoginPage.signIn(LOGIN, PASSWORD);
-        UserBar.selectSettings();
+        UserBar.selectSettings(true);
         When("I change name to one longer than 50 characters");
         AccountPage.changeAccountName(BAD_ACCOUNT_NAME);
         Then("It should fail");
@@ -42,7 +42,7 @@ public class SettingsTest extends BasicTest {
         SettingsPage.signOut();
         When("I sign in with the new password and check the new account name");
         LoginPage.signIn(LOGIN, NEW_PASSWORD);
-        UserBar.selectSettings();
+        UserBar.selectSettings(true);
         Then("It should work now with the new changes");
         UserBar.assertUserName(NEW_ACCOUNT_NAME);
         Report("The email and account name will be changed back");
@@ -101,7 +101,7 @@ public class SettingsTest extends BasicTest {
         When("I login");
         LoginPage.signIn(LOGIN, PASSWORD);
 
-        UserBar.selectSettings();
+        UserBar.selectSettings(true);
         SettingsPage.selectSettingsTab(StringRef.SettingTab.LOCATIONS);
         LocationsPage.selectLocation(1);
 

@@ -122,6 +122,10 @@ public class Browser {
         driver.navigate().refresh();
     }
 
+    public static void goTo(String url){
+        driver.get(url);
+    }
+
     public static void goBack(){
         driver.navigate().back();
     }

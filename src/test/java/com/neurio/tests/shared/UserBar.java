@@ -37,8 +37,21 @@ public class UserBar extends Browser{
     /**
      * Selects the settings button in user bar
      */
-    public static void selectSettings(){
-        getElementByCSS(StringRef.SETTINGS_CSS_SELECTOR).click();
+    public static void selectSettings(boolean url){
+        if(url){
+            String mode = Common.getPropertyValue("mode", "staging");
+            String settingsURL;
+            if (mode.contains("staging")){
+                settingsURL = StringRef.STAGING_HOME_PAGE;
+            } else {
+                settingsURL = StringRef.PRODUCTION_HOME_PAGE;
+            }
+            settingsURL += "#settings";
+            goTo(settingsURL);
+        } else {
+            getElementByCSS(StringRef.SETTINGS_CSS_SELECTOR).click();
+        }
+
     }
 
     /**
